@@ -6,7 +6,9 @@
            (java.util.Base64)))
 
 (defn- random-base64 [buffer-size]
-  (let [buffer (byte-array buffer-size)]
+  (let [random (SecureRandom.)
+        base64 (.withoutPadding (Base64/getUrlEncoder))
+        buffer (byte-array buffer-size)]
     (.nextBytes random buffer)
     (.encodeToString base64 buffer)))
 
