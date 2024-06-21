@@ -1,13 +1,11 @@
 (ns ring.middleware.anti-forgery.session
   "Contains the synchronizer token (or session) strategy."
   (:require [ring.middleware.anti-forgery.strategy :as strategy]
-            [crypto.equality :as crypto])
-  (:import (java.security.SecureRandom)
-           (java.util.Base64)))
+            [crypto.equality :as crypto]))
 
 (defn- random-base64 [buffer-size]
-  (let [random (SecureRandom.)
-        base64 (.withoutPadding (Base64/getUrlEncoder))
+  (let [random (java.security.SecureRandom.)
+        base64 (.withoutPadding (java.util.Base64/getUrlEncoder))
         buffer (byte-array buffer-size)]
     (.nextBytes random buffer)
     (.encodeToString base64 buffer)))
