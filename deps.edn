@@ -1,4 +1,4 @@
 {:paths ["src"]
  :deps
- {weavejester/crypto-equality {:mvn/version "1.0.1"}
+ {crypto-equality/crypto-equality {:mvn/version "1.0.1"}
   hiccup/hiccup {:mvn/version "1.0.5"}}}
